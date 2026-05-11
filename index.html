@@ -19,10 +19,12 @@
   <style>body { box-sizing: border-box; }</style>
  </head>
  <body class="h-full bg-gray-50 overflow-auto">
-  <div id="app-wrapper" class="w-full min-h-full flex flex-col" style="background: linear-gradient(135deg, #f0f7f0 0%, #f5f8fc 50%, #eef4ee 100%);"><!-- Header -->
+  <div id="app-wrapper" class="w-full min-h-full flex flex-col" style="background: linear-gradient(135deg, #f0f7f0 0%, #f5f8fc 50%, #eef4ee 100%);">
+   <!-- Header -->
    <header class="w-full py-5 px-6" style="background: linear-gradient(90deg, #0d2b4e, #163d6b); border-bottom: 3px solid #4caf50;">
     <div class="max-w-5xl mx-auto flex items-center gap-4">
-     <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background:#4caf50;"><i data-lucide="wrench" style="width:22px;height:22px;color:#fff;"></i>
+     <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background:#4caf50;">
+      <i data-lucide="wrench" style="width:22px;height:22px;color:#fff;"></i>
      </div>
      <div>
       <h1 id="form-title" class="text-white text-xl font-semibold tracking-wide">Solicitação e recebimento da abertura de chamado</h1>
@@ -31,40 +33,56 @@
     </div>
    </header><!-- Main Content -->
    <main class="flex-1 w-full px-4 py-8">
-    <div class="max-w-5xl mx-auto"><!-- Status bar -->
-     <div class="flex items-center gap-2 mb-6 px-1"><span class="w-2 h-2 rounded-full bg-green-500" style="animation: pulse-dot 2s infinite;"></span> <span class="text-xs text-gray-500 font-medium">Sistema online — Preencha todos os campos obrigatórios</span>
+    <div class="max-w-5xl mx-auto">
+     <!-- Status bar -->
+     <div class="flex items-center gap-2 mb-6 px-1">
+      <span class="w-2 h-2 rounded-full bg-green-500" style="animation: pulse-dot 2s infinite;"></span> <span class="text-xs text-gray-500 font-medium">Sistema online — Preencha todos os campos obrigatórios</span>
      </div>
      <form id="ticket-form" class="bg-white rounded-xl overflow-hidden field-shadow" style="border: 1px solid #e2e8f0;">
-      <div class="grid grid-cols-1 lg:grid-cols-2"><!-- Left Column -->
+      <div class="grid grid-cols-1 lg:grid-cols-2">
+       <!-- Left Column -->
        <div class="p-6 lg:p-8 space-y-5 lg:border-r" style="border-color:#e8f0e8;">
-        <div class="flex items-center gap-2 mb-2"><i data-lucide="user" style="width:16px;height:16px;color:#4caf50;"></i> <span class="text-sm font-semibold text-gray-700 uppercase tracking-wider">Dados do Solicitante</span>
+        <div class="flex items-center gap-2 mb-2">
+         <i data-lucide="user" style="width:16px;height:16px;color:#4caf50;"></i> <span class="text-sm font-semibold text-gray-700 uppercase tracking-wider">Dados do Solicitante</span>
         </div>
-        <div><label for="empresa" class="block text-sm font-medium text-gray-600 mb-1">Empresa <span class="text-red-400">*</span></label> <input type="text" id="empresa" required placeholder="Nome da empresa" class="w-full px-3 py-2.5 rounded-lg border border-gray-200 field-shadow text-sm focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent transition">
+        <div>
+         <label for="empresa" class="block text-sm font-medium text-gray-600 mb-1">Empresa <span class="text-red-400">*</span></label> <input type="text" id="empresa" required placeholder="Nome da empresa" class="w-full px-3 py-2.5 rounded-lg border border-gray-200 field-shadow text-sm focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent transition">
         </div>
-        <div><label for="local" class="block text-sm font-medium text-gray-600 mb-1">Local <span class="text-red-400">*</span></label> <input type="text" id="local" required placeholder="Setor / Bloco / Sala" class="w-full px-3 py-2.5 rounded-lg border border-gray-200 field-shadow text-sm focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent transition">
+        <div>
+         <label for="local" class="block text-sm font-medium text-gray-600 mb-1">Local <span class="text-red-400">*</span></label> <input type="text" id="local" required placeholder="Setor / Bloco / Sala" class="w-full px-3 py-2.5 rounded-lg border border-gray-200 field-shadow text-sm focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent transition">
         </div>
-        <div><label for="assunto" class="block text-sm font-medium text-gray-600 mb-1">Assunto <span class="text-red-400">*</span></label> <input type="text" id="assunto" required placeholder="Resumo breve do problema" class="w-full px-3 py-2.5 rounded-lg border border-gray-200 field-shadow text-sm focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent transition">
+        <div>
+         <label for="assunto" class="block text-sm font-medium text-gray-600 mb-1">Assunto <span class="text-red-400">*</span></label> <input type="text" id="assunto" required placeholder="Resumo breve do problema" class="w-full px-3 py-2.5 rounded-lg border border-gray-200 field-shadow text-sm focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent transition">
         </div>
-        <div><label for="nome" class="block text-sm font-medium text-gray-600 mb-1">Nome do solicitante <span class="text-red-400">*</span></label> <input type="text" id="nome" required placeholder="Seu nome completo" class="w-full px-3 py-2.5 rounded-lg border border-gray-200 field-shadow text-sm focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent transition">
+        <div>
+         <label for="nome" class="block text-sm font-medium text-gray-600 mb-1">Nome do solicitante <span class="text-red-400">*</span></label> <input type="text" id="nome" required placeholder="Seu nome completo" class="w-full px-3 py-2.5 rounded-lg border border-gray-200 field-shadow text-sm focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent transition">
         </div>
-        <div><label for="email" class="block text-sm font-medium text-gray-600 mb-1">E-mail do solicitante <span class="text-red-400">*</span></label> <input type="email" id="email" required placeholder="seu.email@empresa.com" class="w-full px-3 py-2.5 rounded-lg border border-gray-200 field-shadow text-sm focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent transition">
+        <div>
+         <label for="email" class="block text-sm font-medium text-gray-600 mb-1">E-mail do solicitante <span class="text-red-400">*</span></label> <input type="email" id="email" required placeholder="seu.email@empresa.com" class="w-full px-3 py-2.5 rounded-lg border border-gray-200 field-shadow text-sm focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent transition">
         </div>
-        <div id="helper-text" class="flex items-start gap-2 bg-green-50 border border-green-200 rounded-lg p-3 mt-2"><i data-lucide="info" style="width:16px;height:16px;color:#4caf50;flex-shrink:0;margin-top:2px;"></i>
+        <div id="helper-text" class="flex items-start gap-2 bg-green-50 border border-green-200 rounded-lg p-3 mt-2">
+         <i data-lucide="info" style="width:16px;height:16px;color:#4caf50;flex-shrink:0;margin-top:2px;"></i>
          <p class="text-xs text-green-800 leading-relaxed">Sua solicitação será recebida e registrada automaticamente após o preenchimento completo e envio deste formulário.</p>
         </div>
        </div><!-- Right Column -->
        <div class="p-6 lg:p-8 space-y-5">
-        <div class="flex items-center gap-2 mb-2"><i data-lucide="file-text" style="width:16px;height:16px;color:#0d2b4e;"></i> <span class="text-sm font-semibold text-gray-700 uppercase tracking-wider">Detalhes da Solicitação</span>
+        <div class="flex items-center gap-2 mb-2">
+         <i data-lucide="file-text" style="width:16px;height:16px;color:#0d2b4e;"></i> <span class="text-sm font-semibold text-gray-700 uppercase tracking-wider">Detalhes da Solicitação</span>
         </div>
-        <div><label for="descricao" class="block text-sm font-medium text-gray-600 mb-1">Descrição da solicitação <span class="text-red-400">*</span></label> <textarea id="descricao" required rows="4" placeholder="Descreva o problema com o máximo de detalhes possível..." class="w-full px-3 py-2.5 rounded-lg border border-gray-200 field-shadow text-sm focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent transition resize-none"></textarea>
+        <div>
+         <label for="descricao" class="block text-sm font-medium text-gray-600 mb-1">Descrição da solicitação <span class="text-red-400">*</span></label> <textarea id="descricao" required rows="4" placeholder="Descreva o problema com o máximo de detalhes possível..." class="w-full px-3 py-2.5 rounded-lg border border-gray-200 field-shadow text-sm focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent transition resize-none"></textarea>
         </div>
-        <div><label for="categoria" class="block text-sm font-medium text-gray-600 mb-1">Categoria / Prioridade <span class="text-red-400">*</span></label> <select id="categoria" required class="w-full px-3 py-2.5 rounded-lg border border-gray-200 field-shadow text-sm focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent transition bg-white"> <option value="">Selecione...</option> <option value="baixa">🟢 Baixa — Manutenção preventiva</option> <option value="media">🟡 Média — Problema parcial</option> <option value="alta">🟠 Alta — Serviço interrompido</option> <option value="critica">🔴 Crítica — Parada total</option> </select>
+        <div>
+         <label for="categoria" class="block text-sm font-medium text-gray-600 mb-1">Categoria / Prioridade <span class="text-red-400">*</span></label> <select id="categoria" required class="w-full px-3 py-2.5 rounded-lg border border-gray-200 field-shadow text-sm focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent transition bg-white"> <option value="">Selecione...</option> <option value="baixa">🟢 Baixa — Manutenção preventiva</option> <option value="media">🟡 Média — Problema parcial</option> <option value="alta">🟠 Alta — Serviço interrompido</option> <option value="critica">🔴 Crítica — Parada total</option> </select>
         </div>
-        <div><label for="info-adicional" class="block text-sm font-medium text-gray-600 mb-1">Informações adicionais</label> <textarea id="info-adicional" rows="2" placeholder="Patrimônio, número de série, observações..." class="w-full px-3 py-2.5 rounded-lg border border-gray-200 field-shadow text-sm focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent transition resize-none"></textarea>
+        <div>
+         <label for="info-adicional" class="block text-sm font-medium text-gray-600 mb-1">Informações adicionais</label> <textarea id="info-adicional" rows="2" placeholder="Patrimônio, número de série, observações..." class="w-full px-3 py-2.5 rounded-lg border border-gray-200 field-shadow text-sm focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent transition resize-none"></textarea>
         </div><!-- Upload area -->
-        <div><label class="block text-sm font-medium text-gray-600 mb-1">Foto do problema</label>
+        <div>
+         <label class="block text-sm font-medium text-gray-600 mb-1">Foto do problema</label>
          <div id="upload-area" class="border-2 border-dashed border-gray-300 rounded-lg p-4 text-center cursor-pointer hover:border-green-400 hover:bg-green-50 transition">
-          <div id="upload-placeholder"><i data-lucide="camera" style="width:28px;height:28px;color:#9ca3af;margin:0 auto;display:block;"></i>
+          <div id="upload-placeholder">
+           <i data-lucide="camera" style="width:28px;height:28px;color:#9ca3af;margin:0 auto;display:block;"></i>
            <p class="text-xs text-gray-400 mt-2">Clique ou arraste para anexar imagem</p>
           </div>
           <div id="upload-preview" class="hidden">
@@ -74,7 +92,8 @@
         </div><!-- Maintenance illustration -->
         <div class="rounded-lg overflow-hidden" style="background: linear-gradient(135deg, #e8f5e9, #e3f2fd); border:1px solid #c8e6c9;">
          <div class="p-4 flex items-center gap-3">
-          <div class="w-14 h-14 rounded-lg flex items-center justify-center flex-shrink-0" style="background:#0d2b4e;"><i data-lucide="settings" style="width:28px;height:28px;color:#4caf50;"></i>
+          <div class="w-14 h-14 rounded-lg flex items-center justify-center flex-shrink-0" style="background:#0d2b4e;">
+           <i data-lucide="settings" style="width:28px;height:28px;color:#4caf50;"></i>
           </div>
           <div>
            <p class="text-xs font-semibold" style="color:#0d2b4e;">Manutenção &amp; Suporte Técnico</p>
@@ -85,7 +104,30 @@
        </div>
       </div>
      </form><!-- Toast notification -->
-     <div id="toast" class="hidden fixed bottom-6 left-1/2 -translate-x-1/2 bg-green-600 text-white px-6 py-3 rounded-lg shadow-xl text-sm font-medium toast-enter z-50 flex items-center gap-2"><i data-lucide="check" style="width:16px;height:16px;"></i> <span>Chamado registrado com sucesso!</span>
+     <div id="toast" class="hidden fixed bottom-6 left-1/2 -translate-x-1/2 bg-green-600 text-white px-6 py-3 rounded-lg shadow-xl text-sm font-medium toast-enter z-50 flex items-center gap-2">
+      <i data-lucide="check" style="width:16px;height:16px;"></i> <span>Chamado registrado com sucesso!</span>
+     </div><!-- Confirmation Modal -->
+     <div id="confirmation-modal" class="hidden fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50 p-4">
+      <div class="bg-white rounded-xl shadow-2xl max-w-md w-full overflow-hidden" style="animation: slideUp 0.4s ease-out;">
+       <div style="background: linear-gradient(135deg, #4caf50, #2e7d32); padding: 24px; text-align: center;">
+        <div style="width: 56px; height: 56px; background: rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px;"><i data-lucide="check-circle" style="width: 32px; height: 32px; color: white;"></i>
+        </div>
+        <h2 style="color: white; font-size: 20px; font-weight: 600; margin: 0;">Chamado Criado com Sucesso</h2>
+        <p style="color: rgba(255,255,255,0.9); font-size: 13px; margin: 8px 0 0;">Sua solicitação foi registrada no sistema</p>
+       </div>
+       <div style="padding: 24px; text-align: center;">
+        <p style="color: #666; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin: 0 0 12px;">Número de Protocolo</p>
+        <div style="background: #f0f7f0; border: 2px solid #4caf50; border-radius: 8px; padding: 12px; margin-bottom: 16px;">
+         <p id="protocol-number" style="color: #2e7d32; font-size: 24px; font-weight: 700; letter-spacing: 2px; margin: 0; font-family: 'Courier New', monospace;">#000000</p>
+        </div>
+        <div style="background: #f9f9f9; border-left: 4px solid #4caf50; padding: 12px; margin-bottom: 16px; text-align: left; border-radius: 4px;">
+         <p style="color: #555; font-size: 12px; margin: 0 0 8px 0;"><span style="font-weight: 600;">Empresa:</span> <span id="confirm-empresa">—</span></p>
+         <p style="color: #555; font-size: 12px; margin: 0 0 8px 0;"><span style="font-weight: 600;">Prioridade:</span> <span id="confirm-categoria">—</span></p>
+         <p style="color: #555; font-size: 12px; margin: 0;"><span style="font-weight: 600;">Data/Hora:</span> <span id="confirm-datetime">—</span></p>
+        </div>
+        <p style="color: #888; font-size: 11px; line-height: 1.5; margin: 0 0 16px;">Guarde este número para acompanhar sua solicitação. Um e-mail de confirmação foi enviado para o endereço registrado.</p><button id="close-modal-btn" type="button" style="width: 100%; padding: 10px 16px; background: #4caf50; color: white; border: none; border-radius: 6px; font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.2s; background: linear-gradient(90deg, #388e3c, #4caf50); hover-background: linear-gradient(90deg, #2e7d32, #388e3c);"> <i data-lucide="check" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 6px; display: inline;"></i>Fechar </button>
+       </div>
+      </div>
      </div>
     </div>
    </main><!-- Footer -->
@@ -93,9 +135,11 @@
     <div class="max-w-5xl mx-auto flex items-center justify-between flex-wrap gap-3">
      <p id="footer-text" class="text-green-200 text-xs">Sistema de Chamados Técnicos — © 2025</p>
      <div class="flex items-center gap-2">
-      <div class="w-8 h-8 rounded flex items-center justify-center" style="background: linear-gradient(135deg, #4caf50, #2e7d32);"><i data-lucide="graduation-cap" style="width:16px;height:16px;color:#fff;"></i>
+      <div class="w-8 h-8 rounded flex items-center justify-center" style="background: linear-gradient(135deg, #4caf50, #2e7d32);">
+       <i data-lucide="graduation-cap" style="width:16px;height:16px;color:#fff;"></i>
       </div>
-      <div class="leading-none"><span class="text-white text-xs font-bold tracking-wide">TECH</span> <span class="text-green-400 text-xs font-bold">EDU</span>
+      <div class="leading-none">
+       <span class="text-white text-xs font-bold tracking-wide">TECH</span> <span class="text-green-400 text-xs font-bold">EDU</span>
        <p class="text-gray-400 text-[9px]">Educação &amp; Indústria</p>
       </div>
      </div>
@@ -207,6 +251,35 @@
     document.getElementById('upload-preview').classList.add('hidden');
   });
 
+  // === Generate protocol number ===
+  function generateProtocolNumber() {
+    const timestamp = Date.now().toString().slice(-6);
+    const random = Math.floor(Math.random() * 900000) + 100000;
+    return `CHD${timestamp}${random}`.slice(0, 12);
+  }
+
+  // === Format datetime ===
+  function formatDateTime(isoString) {
+    const date = new Date(isoString);
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const year = date.getFullYear();
+    const hours = String(date.getHours()).padStart(2, '0');
+    const minutes = String(date.getMinutes()).padStart(2, '0');
+    return `${day}/${month}/${year} às ${hours}:${minutes}`;
+  }
+
+  // === Format category ===
+  function getCategoryLabel(categoryValue) {
+    const categories = {
+      'baixa': '🟢 Baixa — Manutenção preventiva',
+      'media': '🟡 Média — Problema parcial',
+      'alta': '🟠 Alta — Serviço interrompido',
+      'critica': '🔴 Crítica — Parada total'
+    };
+    return categories[categoryValue] || '—';
+  }
+
   // === Form submit ===
   document.getElementById('ticket-form').addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -215,6 +288,7 @@
     btn.disabled = true;
     btnText.textContent = 'Enviando...';
 
+    const now = new Date().toISOString();
     const result = await window.dataSdk.create({
       empresa: document.getElementById('empresa').value,
       local: document.getElementById('local').value,
@@ -224,7 +298,7 @@
       descricao: document.getElementById('descricao').value,
       categoria: document.getElementById('categoria').value,
       info_adicional: document.getElementById('info-adicional').value,
-      created_at: new Date().toISOString()
+      created_at: now
     });
 
     btn.disabled = false;
@@ -232,13 +306,22 @@
     btnText.textContent = cfg.save_button_text || defaultConfig.save_button_text;
 
     if (result.isOk) {
+      const protocolNum = generateProtocolNumber();
+      const empresa = document.getElementById('empresa').value;
+      const categoria = document.getElementById('categoria').value;
+
+      // Populate and show confirmation modal
+      document.getElementById('protocol-number').textContent = `#${protocolNum}`;
+      document.getElementById('confirm-empresa').textContent = empresa;
+      document.getElementById('confirm-categoria').textContent = getCategoryLabel(categoria);
+      document.getElementById('confirm-datetime').textContent = formatDateTime(now);
+      document.getElementById('confirmation-modal').classList.remove('hidden');
+
+      // Reset form
       document.getElementById('ticket-form').reset();
       fileSelected = false;
       document.getElementById('upload-placeholder').classList.remove('hidden');
       document.getElementById('upload-preview').classList.add('hidden');
-      const toast = document.getElementById('toast');
-      toast.classList.remove('hidden');
-      setTimeout(() => toast.classList.add('hidden'), 3000);
     } else {
       const toast = document.getElementById('toast');
       toast.querySelector('span').textContent = 'Erro ao enviar. Tente novamente.';
@@ -252,7 +335,12 @@
     }
   });
 
+  // === Close modal ===
+  document.getElementById('close-modal-btn').addEventListener('click', () => {
+    document.getElementById('confirmation-modal').classList.add('hidden');
+  });
+
   lucide.createIcons();
 </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9fa2deb8a61cf1d5',t:'MTc3ODUyMDE5MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9fa2fcaf17fcf1d5',t:'MTc3ODUyMTQxOC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
