@@ -1,0 +1,263 @@
+
+Eder Vitor Paixão de Sousa
+2:24 PM (5 minutes ago)
+to me
+
+<!doctype html>
+<html lang="pt-BR" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chamados Técnicos</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <script src="/_sdk/data_sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+    * { font-family: 'Source Sans 3', sans-serif; }
+    .field-shadow { box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+    .toast-enter { animation: slideUp 0.3s ease-out; }
+    @keyframes slideUp { from { transform: translateY(20px); opacity:0; } to { transform: translateY(0); opacity:1; } }
+    @keyframes pulse-dot { 0%,100% { opacity:1; } 50% { opacity:0.4; } }
+  </style>
+  <style>body { box-sizing: border-box; }</style>
+ </head>
+ <body class="h-full bg-gray-50 overflow-auto">
+  <div id="app-wrapper" class="w-full min-h-full flex flex-col" style="background: linear-gradient(135deg, #f0f7f0 0%, #f5f8fc 50%, #eef4ee 100%);"><!-- Header -->
+   <header class="w-full py-5 px-6" style="background: linear-gradient(90deg, #0d2b4e, #163d6b); border-bottom: 3px solid #4caf50;">
+    <div class="max-w-5xl mx-auto flex items-center gap-4">
+     <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background:#4caf50;"><i data-lucide="wrench" style="width:22px;height:22px;color:#fff;"></i>
+     </div>
+     <div>
+      <h1 id="form-title" class="text-white text-xl font-semibold tracking-wide">Solicitação e recebimento da abertura de chamado</h1>
+      <p class="text-green-300 text-xs mt-0.5 font-light">Sistema Integrado de Suporte Técnico</p>
+     </div>
+    </div>
+   </header><!-- Main Content -->
+   <main class="flex-1 w-full px-4 py-8">
+    <div class="max-w-5xl mx-auto"><!-- Status bar -->
+     <div class="flex items-center gap-2 mb-6 px-1"><span class="w-2 h-2 rounded-full bg-green-500" style="animation: pulse-dot 2s infinite;"></span> <span class="text-xs text-gray-500 font-medium">Sistema online — Preencha todos os campos obrigatórios</span>
+     </div>
+     <form id="ticket-form" class="bg-white rounded-xl overflow-hidden field-shadow" style="border: 1px solid #e2e8f0;">
+      <div class="grid grid-cols-1 lg:grid-cols-2"><!-- Left Column -->
+       <div class="p-6 lg:p-8 space-y-5 lg:border-r" style="border-color:#e8f0e8;">
+        <div class="flex items-center gap-2 mb-2"><i data-lucide="user" style="width:16px;height:16px;color:#4caf50;"></i> <span class="text-sm font-semibold text-gray-700 uppercase tracking-wider">Dados do Solicitante</span>
+        </div>
+        <div><label for="empresa" class="block text-sm font-medium text-gray-600 mb-1">Empresa <span class="text-red-400">*</span></label> <input type="text" id="empresa" required placeholder="Nome da empresa" class="w-full px-3 py-2.5 rounded-lg border border-gray-200 field-shadow text-sm focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent transition">
+        </div>
+        <div><label for="local" class="block text-sm font-medium text-gray-600 mb-1">Local <span class="text-red-400">*</span></label> <input type="text" id="local" required placeholder="Setor / Bloco / Sala" class="w-full px-3 py-2.5 rounded-lg border border-gray-200 field-shadow text-sm focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent transition">
+        </div>
+        <div><label for="assunto" class="block text-sm font-medium text-gray-600 mb-1">Assunto <span class="text-red-400">*</span></label> <input type="text" id="assunto" required placeholder="Resumo breve do problema" class="w-full px-3 py-2.5 rounded-lg border border-gray-200 field-shadow text-sm focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent transition">
+        </div>
+        <div><label for="nome" class="block text-sm font-medium text-gray-600 mb-1">Nome do solicitante <span class="text-red-400">*</span></label> <input type="text" id="nome" required placeholder="Seu nome completo" class="w-full px-3 py-2.5 rounded-lg border border-gray-200 field-shadow text-sm focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent transition">
+        </div>
+        <div><label for="email" class="block text-sm font-medium text-gray-600 mb-1">E-mail do solicitante <span class="text-red-400">*</span></label> <input type="email" id="email" required placeholder="seu.email@empresa.com" class="w-full px-3 py-2.5 rounded-lg border border-gray-200 field-shadow text-sm focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent transition">
+        </div>
+        <div id="helper-text" class="flex items-start gap-2 bg-green-50 border border-green-200 rounded-lg p-3 mt-2"><i data-lucide="info" style="width:16px;height:16px;color:#4caf50;flex-shrink:0;margin-top:2px;"></i>
+         <p class="text-xs text-green-800 leading-relaxed">Sua solicitação será recebida e registrada automaticamente após o preenchimento completo e envio deste formulário.</p>
+        </div>
+       </div><!-- Right Column -->
+       <div class="p-6 lg:p-8 space-y-5">
+        <div class="flex items-center gap-2 mb-2"><i data-lucide="file-text" style="width:16px;height:16px;color:#0d2b4e;"></i> <span class="text-sm font-semibold text-gray-700 uppercase tracking-wider">Detalhes da Solicitação</span>
+        </div>
+        <div><label for="descricao" class="block text-sm font-medium text-gray-600 mb-1">Descrição da solicitação <span class="text-red-400">*</span></label> <textarea id="descricao" required rows="4" placeholder="Descreva o problema com o máximo de detalhes possível..." class="w-full px-3 py-2.5 rounded-lg border border-gray-200 field-shadow text-sm focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent transition resize-none"></textarea>
+        </div>
+        <div><label for="categoria" class="block text-sm font-medium text-gray-600 mb-1">Categoria / Prioridade <span class="text-red-400">*</span></label> <select id="categoria" required class="w-full px-3 py-2.5 rounded-lg border border-gray-200 field-shadow text-sm focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent transition bg-white"> <option value="">Selecione...</option> <option value="baixa">🟢 Baixa — Manutenção preventiva</option> <option value="media">🟡 Média — Problema parcial</option> <option value="alta">🟠 Alta — Serviço interrompido</option> <option value="critica">🔴 Crítica — Parada total</option> </select>
+        </div>
+        <div><label for="info-adicional" class="block text-sm font-medium text-gray-600 mb-1">Informações adicionais</label> <textarea id="info-adicional" rows="2" placeholder="Patrimônio, número de série, observações..." class="w-full px-3 py-2.5 rounded-lg border border-gray-200 field-shadow text-sm focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent transition resize-none"></textarea>
+        </div><!-- Upload area -->
+        <div><label class="block text-sm font-medium text-gray-600 mb-1">Foto do problema</label>
+         <div id="upload-area" class="border-2 border-dashed border-gray-300 rounded-lg p-4 text-center cursor-pointer hover:border-green-400 hover:bg-green-50 transition">
+          <div id="upload-placeholder"><i data-lucide="camera" style="width:28px;height:28px;color:#9ca3af;margin:0 auto;display:block;"></i>
+           <p class="text-xs text-gray-400 mt-2">Clique ou arraste para anexar imagem</p>
+          </div>
+          <div id="upload-preview" class="hidden">
+           <p class="text-xs text-green-600 font-medium">📎 Imagem selecionada</p><button type="button" id="remove-upload" class="text-xs text-red-400 underline mt-1">Remover</button>
+          </div><input type="file" id="file-input" accept="image/*" class="hidden">
+         </div>
+        </div><!-- Maintenance illustration -->
+        <div class="rounded-lg overflow-hidden" style="background: linear-gradient(135deg, #e8f5e9, #e3f2fd); border:1px solid #c8e6c9;">
+         <div class="p-4 flex items-center gap-3">
+          <div class="w-14 h-14 rounded-lg flex items-center justify-center flex-shrink-0" style="background:#0d2b4e;"><i data-lucide="settings" style="width:28px;height:28px;color:#4caf50;"></i>
+          </div>
+          <div>
+           <p class="text-xs font-semibold" style="color:#0d2b4e;">Manutenção &amp; Suporte Técnico</p>
+           <p class="text-xs text-gray-500 mt-0.5">Equipe especializada em infraestrutura e equipamentos industriais</p>
+          </div>
+         </div>
+        </div><!-- Save button --> <button type="submit" id="save-btn" class="w-full py-3 rounded-lg text-white font-semibold text-sm tracking-wide transition-all hover:shadow-lg active:scale-[0.98] flex items-center justify-center gap-2" style="background: linear-gradient(90deg, #388e3c, #4caf50);"> <i data-lucide="check-circle" style="width:18px;height:18px;"></i> <span id="save-btn-text">Salvar</span> </button>
+       </div>
+      </div>
+     </form><!-- Toast notification -->
+     <div id="toast" class="hidden fixed bottom-6 left-1/2 -translate-x-1/2 bg-green-600 text-white px-6 py-3 rounded-lg shadow-xl text-sm font-medium toast-enter z-50 flex items-center gap-2"><i data-lucide="check" style="width:16px;height:16px;"></i> <span>Chamado registrado com sucesso!</span>
+     </div>
+    </div>
+   </main><!-- Footer -->
+   <footer class="w-full py-4 px-6 mt-auto" style="background:#0d2b4e; border-top: 3px solid #4caf50;">
+    <div class="max-w-5xl mx-auto flex items-center justify-between flex-wrap gap-3">
+     <p id="footer-text" class="text-green-200 text-xs">Sistema de Chamados Técnicos — © 2025</p>
+     <div class="flex items-center gap-2">
+      <div class="w-8 h-8 rounded flex items-center justify-center" style="background: linear-gradient(135deg, #4caf50, #2e7d32);"><i data-lucide="graduation-cap" style="width:16px;height:16px;color:#fff;"></i>
+      </div>
+      <div class="leading-none"><span class="text-white text-xs font-bold tracking-wide">TECH</span> <span class="text-green-400 text-xs font-bold">EDU</span>
+       <p class="text-gray-400 text-[9px]">Educação &amp; Indústria</p>
+      </div>
+     </div>
+    </div>
+   </footer>
+  </div>
+  <script>
+  // === Config ===
+  const defaultConfig = {
+    form_title: 'Solicitação e recebimento da abertura de chamado',
+    helper_text: 'Sua solicitação será recebida e registrada automaticamente após o preenchimento completo e envio deste formulário.',
+    save_button_text: 'Salvar',
+    footer_text: 'Sistema de Chamados Técnicos — © 2025',
+    background_color: '#f0f7f0',
+    surface_color: '#ffffff',
+    text_color: '#1e293b',
+    primary_action_color: '#4caf50',
+    secondary_action_color: '#0d2b4e',
+    font_family: 'Source Sans 3',
+    font_size: 14
+  };
+
+  let fileSelected = false;
+
+  // === Element SDK ===
+  window.elementSdk.init({
+    defaultConfig,
+    onConfigChange: async (config) => {
+      const c = key => config[key] || defaultConfig[key];
+      document.getElementById('form-title').textContent = c('form_title');
+      document.getElementById('helper-text').querySelector('p').textContent = c('helper_text');
+      document.getElementById('save-btn-text').textContent = c('save_button_text');
+      document.getElementById('footer-text').textContent = c('footer_text');
+
+      const bg = c('background_color');
+      document.getElementById('app-wrapper').style.background = `linear-gradient(135deg, ${bg} 0%, #f5f8fc 50%, ${bg} 100%)`;
+
+      const surface = c('surface_color');
+      document.querySelector('#ticket-form').style.backgroundColor = surface;
+
+      const txt = c('text_color');
+      document.querySelectorAll('label, h1, .text-gray-700, .text-gray-600').forEach(el => el.style.color = txt);
+
+      const primary = c('primary_action_color');
+      document.getElementById('save-btn').style.background = `linear-gradient(90deg, ${primary}, ${primary}dd)`;
+
+      const secondary = c('secondary_action_color');
+      document.querySelectorAll('header, footer').forEach(el => {
+        el.style.background = `linear-gradient(90deg, ${secondary}, ${secondary}cc)`;
+      });
+
+      const font = c('font_family');
+      const size = c('font_size');
+      document.body.style.fontFamily = `${font}, Source Sans 3, sans-serif`;
+      document.querySelectorAll('input, textarea, select').forEach(el => el.style.fontSize = `${size}px`);
+      document.querySelectorAll('p, span, label').forEach(el => {
+        if (!el.closest('header') && !el.closest('footer')) el.style.fontSize = `${size}px`;
+      });
+      document.getElementById('form-title').style.fontSize = `${size * 1.5}px`;
+    },
+    mapToCapabilities: (config) => ({
+      recolorables: [
+        { get: () => config.background_color || defaultConfig.background_color, set: v => { config.background_color = v; window.elementSdk.setConfig({ background_color: v }); } },
+        { get: () => config.surface_color || defaultConfig.surface_color, set: v => { config.surface_color = v; window.elementSdk.setConfig({ surface_color: v }); } },
+        { get: () => config.text_color || defaultConfig.text_color, set: v => { config.text_color = v; window.elementSdk.setConfig({ text_color: v }); } },
+        { get: () => config.primary_action_color || defaultConfig.primary_action_color, set: v => { config.primary_action_color = v; window.elementSdk.setConfig({ primary_action_color: v }); } },
+        { get: () => config.secondary_action_color || defaultConfig.secondary_action_color, set: v => { config.secondary_action_color = v; window.elementSdk.setConfig({ secondary_action_color: v }); } }
+      ],
+      borderables: [],
+      fontEditable: {
+        get: () => config.font_family || defaultConfig.font_family,
+        set: v => { config.font_family = v; window.elementSdk.setConfig({ font_family: v }); }
+      },
+      fontSizeable: {
+        get: () => config.font_size || defaultConfig.font_size,
+        set: v => { config.font_size = v; window.elementSdk.setConfig({ font_size: v }); }
+      }
+    }),
+    mapToEditPanelValues: (config) => new Map([
+      ['form_title', config.form_title || defaultConfig.form_title],
+      ['helper_text', config.helper_text || defaultConfig.helper_text],
+      ['save_button_text', config.save_button_text || defaultConfig.save_button_text],
+      ['footer_text', config.footer_text || defaultConfig.footer_text]
+    ])
+  });
+
+  // === Data SDK ===
+  (async () => {
+    const result = await window.dataSdk.init({ onDataChanged: () => {} });
+    if (!result.isOk) console.error('Data SDK init failed');
+  })();
+
+  // === Upload ===
+  const uploadArea = document.getElementById('upload-area');
+  const fileInput = document.getElementById('file-input');
+  uploadArea.addEventListener('click', () => fileInput.click());
+  fileInput.addEventListener('change', () => {
+    if (fileInput.files.length) {
+      fileSelected = true;
+      document.getElementById('upload-placeholder').classList.add('hidden');
+      document.getElementById('upload-preview').classList.remove('hidden');
+    }
+  });
+  document.getElementById('remove-upload').addEventListener('click', (e) => {
+    e.stopPropagation();
+    fileSelected = false;
+    fileInput.value = '';
+    document.getElementById('upload-placeholder').classList.remove('hidden');
+    document.getElementById('upload-preview').classList.add('hidden');
+  });
+
+  // === Form submit ===
+  document.getElementById('ticket-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = document.getElementById('save-btn');
+    const btnText = document.getElementById('save-btn-text');
+    btn.disabled = true;
+    btnText.textContent = 'Enviando...';
+
+    const result = await window.dataSdk.create({
+      empresa: document.getElementById('empresa').value,
+      local: document.getElementById('local').value,
+      assunto: document.getElementById('assunto').value,
+      nome_solicitante: document.getElementById('nome').value,
+      email_solicitante: document.getElementById('email').value,
+      descricao: document.getElementById('descricao').value,
+      categoria: document.getElementById('categoria').value,
+      info_adicional: document.getElementById('info-adicional').value,
+      created_at: new Date().toISOString()
+    });
+
+    btn.disabled = false;
+    const cfg = window.elementSdk.config;
+    btnText.textContent = cfg.save_button_text || defaultConfig.save_button_text;
+
+    if (result.isOk) {
+      document.getElementById('ticket-form').reset();
+      fileSelected = false;
+      document.getElementById('upload-placeholder').classList.remove('hidden');
+      document.getElementById('upload-preview').classList.add('hidden');
+      const toast = document.getElementById('toast');
+      toast.classList.remove('hidden');
+      setTimeout(() => toast.classList.add('hidden'), 3000);
+    } else {
+      const toast = document.getElementById('toast');
+      toast.querySelector('span').textContent = 'Erro ao enviar. Tente novamente.';
+      toast.style.background = '#dc2626';
+      toast.classList.remove('hidden');
+      setTimeout(() => {
+        toast.classList.add('hidden');
+        toast.querySelector('span').textContent = 'Chamado registrado com sucesso!';
+        toast.style.background = '#16a34a';
+      }, 3000);
+    }
+  });
+
+  lucide.createIcons();
+</script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9fa2deb8a61cf1d5',t:'MTc3ODUyMDE5MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
